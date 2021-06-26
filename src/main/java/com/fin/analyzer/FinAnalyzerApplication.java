@@ -1,14 +1,13 @@
-package com.hackathon.hclhackathon;
+package com.fin.analyzer;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 @SpringBootApplication
-public class HclHackathonApplication {
+public class FinAnalyzerApplication {
 
 	public static void main(String[] args) {
-		SpringApplication.run(HclHackathonApplication.class, args);
-		System.out.println("hello world..!!");
+		SpringApplication.run(FinAnalyzerApplication.class, args);
 	}
 
 }
