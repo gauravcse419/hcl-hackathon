@@ -39,22 +39,17 @@ public class TransactionControllerTest {
     }
 
     @Test
-    public void testCreateProcessing() throws Exception {
-//        when(this.transactionService.createTransaction(transactionDetailVo)).thenReturn(transactionDetailVo);
-//        this.mockMvc.perform(MockMvcRequestBuilders.post("api/v2/transaction").content(asJsonString(transactionDetailVo))
-//                .contentType(MediaType.APPLICATION_JSON)).andExpect(status().isNotFound());
-
+    public void createTransactionAPI() throws Exception {
+        TransactionDetail details=new TransactionDetail();
+        details.setTransaction_id(1234);
+        when(transactionService.createTransaction(Mockito.any())).thenReturn(details);
+        mvc.perform(MockMvcRequestBuilders.post("/api/v1/transaction")
+                .content(asJsonString(details)).contentType(MediaType.APPLICATION_JSON)
+                .accept(MediaType.APPLICATION_JSON)).andExpect(status().isOk())
+                .andExpect(MockMvcResultMatchers.jsonPath("$.transaction_id").exists());
     }
 
-//    private static String asJsonString(final Object obj) {
-//        try {
-//            final ObjectMapper mapper = new ObjectMapper();
-//            final String jsonContent = mapper.writeValueAsString(obj);
-//            return jsonContent;
-//        } catch (Exception exc) {
-//            throw new RuntimeException(exc);
-//        }
-//    }
+
 
 
     @Test
