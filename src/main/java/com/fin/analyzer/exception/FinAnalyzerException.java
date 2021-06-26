@@ -19,8 +19,7 @@ public class FinAnalyzerException extends RuntimeException {
     }
 
     public FinAnalyzerException(String errorMessage) {
-        super();
-        this.errorMessage = errorMessage;
+        super(errorMessage);
     }
 
     public int getErrorCode() {
@@ -41,31 +40,31 @@ public class FinAnalyzerException extends RuntimeException {
 
 
 
-//    @ExceptionHandler(CustomerNotFoundException.class)
-//    @ResponseStatus(value = HttpStatus.NOT_FOUND)
-//    @ResponseBody
-//    public ErrorResponse handle404Error(CustomerNotFoundException e) {
-//        return new ErrorResponse(e.getErrorCode(), e.getErrorMessage());
-//
-//    }
-//
-//
-//    @ExceptionHandler(TransactionsNotFoundException.class)
-//    @ResponseStatus(value = HttpStatus.NOT_FOUND)
-//    @ResponseBody
-//    public ErrorResponse errorForUpdate(TransactionsNotFoundException e) {
-//        return new ErrorResponse(e.getErrorCode(), e.getErrorMessage());
-//
-//    }
-//
-//    @ExceptionHandler(RuntimeException.class)
-//    @ResponseStatus(value = HttpStatus.INTERNAL_SERVER_ERROR)
-//    @ResponseBody
-//    public ErrorResponse handle500Error() {
-//        return new ErrorResponse(HttpStatus.INTERNAL_SERVER_ERROR.value(),
-//                "Unable to process the request please try after some time");
-//
-//    }
+    @ExceptionHandler(CustomerNotFoundException.class)
+    @ResponseStatus(value = HttpStatus.NOT_FOUND)
+    @ResponseBody
+    public ErrorResponse handle404Error(CustomerNotFoundException e) {
+        return new ErrorResponse(e.getErrorCode(), e.getErrorMessage());
+
+    }
+
+
+    @ExceptionHandler(TransactionsNotFoundException.class)
+    @ResponseStatus(value = HttpStatus.NOT_FOUND)
+    @ResponseBody
+    public ErrorResponse errorForUpdate(TransactionsNotFoundException e) {
+        return new ErrorResponse(e.getErrorCode(), e.getErrorMessage());
+
+    }
+
+    @ExceptionHandler(RuntimeException.class)
+    @ResponseStatus(value = HttpStatus.INTERNAL_SERVER_ERROR)
+    @ResponseBody
+    public ErrorResponse handle500Error() {
+        return new ErrorResponse(HttpStatus.INTERNAL_SERVER_ERROR.value(),
+                "Unable to process the request please try after some time");
+
+    }
 
 
 }
