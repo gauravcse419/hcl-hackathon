@@ -4,7 +4,6 @@ import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.ResponseStatus;
-import org.springframework.web.bind.annotation.RestControllerAdvice;
 
 @ResponseStatus(value = HttpStatus.NOT_FOUND)
 public class FinAnalyzerException extends RuntimeException {
@@ -40,10 +39,10 @@ public class FinAnalyzerException extends RuntimeException {
 
 
 
-    @ExceptionHandler(CustomerNotFoundException.class)
+    @ExceptionHandler(CustomerCreateException.class)
     @ResponseStatus(value = HttpStatus.NOT_FOUND)
     @ResponseBody
-    public ErrorResponse handle404Error(CustomerNotFoundException e) {
+    public ErrorResponse handle404Error(CustomerCreateException e) {
         return new ErrorResponse(e.getErrorCode(), e.getErrorMessage());
 
     }
