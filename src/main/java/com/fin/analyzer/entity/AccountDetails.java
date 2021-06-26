@@ -1,32 +1,27 @@
 package com.fin.analyzer.entity;
 
-
+import com.fin.analyzer.entity.TransactionDetails;
 import lombok.Data;
 
 import javax.persistence.*;
-import java.util.List;
 import java.util.Set;
-
 @Entity
 @Table(name = "account_details")
 @Data
 public class AccountDetails {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private int account_no;
-    @Column
-    private String account_type;
-    @Column
+    @Column(name="account_no",unique = true,nullable = false)
+    private Long accountNo;
+    @Column(name="account_type")
+    private String accountType;
+    @Column(name="customer_id")
+    private Long customerId;
+    @Column(name="amount")
     private double amount;
 
-//    @Column
-//    @ManyToOne(fetch = FetchType.LAZY, optional = false)
-//    @JoinColumn(name = "customer_id", nullable = false)
-//    private CustomerDetails customerDetails;
-
-    @OneToMany(cascade=CascadeType.ALL)
-    @JoinColumn(name="account_no")
+    @OneToMany(cascade = CascadeType.ALL)
+    @JoinColumn(name = "account_no")
     private Set<TransactionDetails> transactionDetailsList;
-
 
 }
