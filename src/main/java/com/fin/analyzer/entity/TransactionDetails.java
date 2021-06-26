@@ -2,12 +2,11 @@ package com.fin.analyzer.entity;
 
 import lombok.Data;
 
+import javax.persistence.*;
 import java.sql.Timestamp;
 
-import javax.persistence.*;
-
 @Entity
-@Table(name = "customer_details")
+@Table(name = "transaction_detail")
 @Data
 public class TransactionDetails {
     @Id
@@ -15,7 +14,6 @@ public class TransactionDetails {
     private int transaction_id;
 
     @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "account_no", nullable = false)
     private AccountDetails accountDetails;
 
     @Column
