@@ -1,13 +1,9 @@
 package com.fin.analyzer.controller;
-
 import com.fin.analyzer.exception.FinAnalyzerException;
 import com.fin.analyzer.model.TransactionDetail;
 import com.fin.analyzer.service.TransactionService;
-import jdk.internal.util.Preconditions;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
-import org.springframework.web.server.ResponseStatusException;
 
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
