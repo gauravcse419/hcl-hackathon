@@ -8,7 +8,7 @@ import java.util.Date;
 @Data
 @Builder
 public class TransactionDetailsModel {
-    private String customerId;
+    private Long acountNo;
     private String transactionDescription;
     private Double amount;
     private PayMentType payMentType;
