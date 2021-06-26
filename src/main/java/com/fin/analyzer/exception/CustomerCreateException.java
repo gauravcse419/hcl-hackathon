@@ -4,7 +4,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.ResponseStatus;
 
 @ResponseStatus(value = HttpStatus.NOT_FOUND)
-public class CustomerNotFoundException extends RuntimeException {
+public class CustomerCreateException extends RuntimeException {
 
     /**
      *
@@ -32,7 +32,7 @@ public class CustomerNotFoundException extends RuntimeException {
     }
 
 
-    public CustomerNotFoundException(int errorCode, String errorMessage) {
+    public CustomerCreateException(int errorCode, String errorMessage) {
         super();
         this.errorCode = errorCode;
         this.errorMessage = errorMessage;

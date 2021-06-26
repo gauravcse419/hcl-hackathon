@@ -8,7 +8,7 @@ import java.sql.Timestamp;
 @Data
 public class TransactionDetail {
     int transaction_id;
-    Long account_no;
+    long account_no;
     AccountDetails accountDetails;
     Timestamp transactionDate;
     private String type;

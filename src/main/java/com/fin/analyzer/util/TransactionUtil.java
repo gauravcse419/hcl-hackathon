@@ -27,6 +27,7 @@ public class TransactionUtil {
     private TransactionDetailsModel getTransactions(TransactionDetails transactionDetail) {
         //int customer_id= transactionDetail.getAccountDetails().getCustomerDetails().getCustomer_id();
         return TransactionDetailsModel.builder()
+                .accountNo(transactionDetail.getAccountNo())
                 .amount(transactionDetail.getAmount())
                 .payMentType(PayMentType.valueOf(transactionDetail.getType()))
                 .date(transactionDetail.getTransactionDate())

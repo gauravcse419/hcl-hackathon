@@ -58,7 +58,7 @@ public class TransactionServiceTest {
         transactionDetails.setTransactionDate(ts);
         transactionDetails.setTransactionDescription("tranfer to accounting");
         transactionDetails.setType("CREDIT");
-        //transactionDetails.setAccountDetails(accountDetails);
+        //transactionDetails.setAccountNo(1l);
         return transactionDetails;
     }
 
