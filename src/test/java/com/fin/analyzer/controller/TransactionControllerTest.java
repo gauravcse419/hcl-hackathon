@@ -1,8 +1,10 @@
 package com.fin.analyzer.controller;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
+import com.fin.analyzer.model.TransactionDetail;
 import com.fin.analyzer.model.TransactionDetailsModel;
 import com.fin.analyzer.service.TransactionService;
+import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.mockito.Mockito;
@@ -14,7 +16,6 @@ import org.springframework.test.context.junit4.SpringRunner;
 import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.test.web.servlet.request.MockMvcRequestBuilders;
 import org.springframework.test.web.servlet.result.MockMvcResultMatchers;
-
 import java.util.ArrayList;
 import java.util.List;
 
@@ -31,6 +32,29 @@ public class TransactionControllerTest {
 
     @MockBean
     TransactionService transactionService;
+
+    @Before
+    public void before() {
+
+    }
+
+    @Test
+    public void testCreateProcessing() throws Exception {
+//        when(this.transactionService.createTransaction(transactionDetailVo)).thenReturn(transactionDetailVo);
+//        this.mockMvc.perform(MockMvcRequestBuilders.post("api/v2/transaction").content(asJsonString(transactionDetailVo))
+//                .contentType(MediaType.APPLICATION_JSON)).andExpect(status().isNotFound());
+
+    }
+
+//    private static String asJsonString(final Object obj) {
+//        try {
+//            final ObjectMapper mapper = new ObjectMapper();
+//            final String jsonContent = mapper.writeValueAsString(obj);
+//            return jsonContent;
+//        } catch (Exception exc) {
+//            throw new RuntimeException(exc);
+//        }
+//    }
 
 
     @Test

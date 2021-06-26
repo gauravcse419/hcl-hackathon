@@ -4,6 +4,7 @@ import com.fin.analyzer.entity.AccountDetails;
 import com.fin.analyzer.entity.TransactionDetails;
 import com.fin.analyzer.exception.FinAnalyzerException;
 import com.fin.analyzer.mapper.TransactionMapper;
+import com.fin.analyzer.model.PayMentType;
 import com.fin.analyzer.model.TransactionDetail;
 import com.fin.analyzer.model.TransactionDetailsModel;
 import com.fin.analyzer.repository.AccountRepository;
@@ -37,8 +38,11 @@ public class TransactionServiceImpl implements TransactionService {
             throw new FinAnalyzerException("Account No is not Present");
         }
         AccountDetails account = accountDetails.get();
-        if(transactionDetail.getType().equals("debit") && transactionDetail.getAmount()>account.getAmount()) {
+        if(transactionDetail.getType().equalsIgnoreCase(String.valueOf(PayMentType.DEBIT)) && transactionDetail.getAmount()>account.getAmount()) {
             throw new FinAnalyzerException("Insufficient Balance");
+        }
+        if(transactionDetail.getAmount()<0) {
+            throw new FinAnalyzerException("Amount is not valid");
         }
         TransactionDetails transactionDetails = this.transactionRepository.save(transactionMapper.ModelToEntityMapper(transactionDetail));
         return this.transactionMapper.EntityToModel(transactionDetails);
