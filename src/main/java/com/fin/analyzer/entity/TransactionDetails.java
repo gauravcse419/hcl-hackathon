@@ -1,30 +1,27 @@
 package com.fin.analyzer.entity;
-
 import lombok.Data;
-
 import java.sql.Timestamp;
-
 import javax.persistence.*;
-
 @Entity
-@Table(name = "customer_details")
+@Table(name = "transaction_details")
 @Data
 public class TransactionDetails {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private int transaction_id;
+    @Column(name="transaction_id",unique = true,nullable = false)
+    private int transactionId;
 
-    @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "account_no", nullable = false)
-    private AccountDetails accountDetails;
-
-    @Column
-    private Timestamp transactionDate;
-    @Column
+    @Column(name="type")
     private String type;
-    @Column
+    @Column(name="transaction_date")
+    private Timestamp transactionDate;
+    @Column(name="account_no")
+    private Long accountNo;
+    @Column(name="amount")
     private double amount;
-    @Column
-    private double balance_amount;
+    @Column(name="transaction_description")
+    private String transactionDescription;
+    @Column(name="balance_amount")
+    private double balanceAmount;
 
 }

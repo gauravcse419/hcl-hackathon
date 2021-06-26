@@ -1,13 +1,15 @@
 package com.fin.analyzer;
 
 import org.junit.Test;
+import org.junit.runner.RunWith;
 import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.test.context.junit4.SpringRunner;
 
-//@SpringBootTest
-class FinAnalyzerApplicationTests {
+@RunWith(SpringRunner.class)
+@SpringBootTest
+public class FinAnalyzerApplicationTests {
 
-//	@Test
-//	void contextLoads() {
-//	}
-
+    @Test
+    public void contextLoads() {
+    }
 }
