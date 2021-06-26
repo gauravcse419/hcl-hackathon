@@ -1,10 +1,10 @@
-package com.hackathon.hclhackathon;
+package com.fin.analyzer;
 
-import org.junit.jupiter.api.Test;
+import org.junit.Test;
 import org.springframework.boot.test.context.SpringBootTest;
 
 @SpringBootTest
-class HclHackathonApplicationTests {
+class FinAnalyzerApplicationTests {
 
 	@Test
 	void contextLoads() {
