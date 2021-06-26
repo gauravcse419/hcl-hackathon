@@ -14,10 +14,12 @@ public class TransactionDetails {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int transaction_id;
 
+    @Column
+    private int account_no;
+
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "account_no", nullable = false)
     private AccountDetails accountDetails;
-
 
     @Column
     private Timestamp transactionDate;
@@ -27,4 +29,5 @@ public class TransactionDetails {
     private double amount;
     @Column
     private double balance_amount;
+
 }
