@@ -19,10 +19,8 @@ public class TransactionMapper {
 
     public TransactionDetails ModelToEntityMapper(TransactionDetail from) {
         TransactionDetails to = new TransactionDetails();
-        Optional<AccountDetails> accountDetails =  this.accountRepository.findById(from.getAccount_no());
-
-        if(accountDetails.isPresent()) {
-            to.setAccountDetails(accountDetails.get());
+        if(from != null) {
+            to.setAccountNo(from.getAccount_no());
             to.setAmount(from.getAmount());
             to.setType(from.getType());
             to.setTransactionDate(new Timestamp(new Date().getTime()));
@@ -31,9 +29,11 @@ public class TransactionMapper {
 
     public TransactionDetail EntityToModel(TransactionDetails from) {
         TransactionDetail to = new TransactionDetail();
-        if(to != null) {
-            to.setTransaction_id(from.getTransaction_id());
+        if(from != null) {
+            to.setTransaction_id(from.getTransactionId());
             to.setAmount(from.getAmount());
+            to.setType(from.getType());
+            to.setAccount_no(from.getAccountNo());
         }
         return to;
 
