@@ -11,39 +11,60 @@ import org.junit.runner.RunWith;
 import org.mockito.Mock;
 import org.mockito.Mockito;
 import org.mockito.MockitoAnnotations;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.test.autoconfigure.web.servlet.WebMvcTest;
 import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.boot.test.mock.mockito.MockBean;
+import org.springframework.http.MediaType;
 import org.springframework.test.context.junit4.SpringRunner;
 import org.springframework.test.web.servlet.MockMvc;
+import org.springframework.test.web.servlet.request.MockMvcRequestBuilders;
+import org.springframework.test.web.servlet.result.MockMvcResultMatchers;
+
+import static com.fin.analyzer.controller.TransactionAggregatorControllerTest.asJsonString;
+import static org.mockito.Mockito.when;
+import static org.springframework.test.web.servlet.result.MockMvcResultHandlers.print;
+import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 
 @RunWith(SpringRunner.class)
-@SpringBootTest
+@WebMvcTest(CustomerController.class)
 public class CustomerServiceControllerTest {
 
 
-    @Mock
+    @MockBean
     CustomerService customerService;
 
-
+    @Autowired
     private MockMvc mockMvc;
 
-    CustomerDetailsModel customerDetailsModel = null;
 
     @Before
-    public void init() throws Exception {
-        MockitoAnnotations.initMocks(this);
-       // this.mockMvc = MockMvcBuilders.standaloneSetup(customerController).build();
-        customerDetailsModel = CustomerUtilMapperTest.getCustomerDetails();
+    public void before(){
+
     }
 
-    /*@Test
+    @Test
     public void createCustomerAPI() throws Exception {
+        CustomerDetailsModel customerDetailsModel = new CustomerDetailsModel();
+        customerDetailsModel.setCustomerId(1);
         when(customerService.createCustomer(Mockito.any())).thenReturn(customerDetailsModel);
         mockMvc.perform(MockMvcRequestBuilders.post("/createcustomer")
-                .contentType(MediaType.APPLICATION_JSON));
-    }*/
+                .content(asJsonString(customerDetailsModel)).contentType(MediaType.APPLICATION_JSON)
+                .accept(MediaType.APPLICATION_JSON))
+                .andDo(print()).andExpect(status().isOk());
 
-
+    }
     @Test
+    public void createCustomerAPIException() throws Exception {
+        CustomerDetailsModel customerDetailsModel = new CustomerDetailsModel();
+        customerDetailsModel.setCustomerId(1);
+        when(customerService.createCustomer(Mockito.any())).thenThrow(new CustomerCreateException(Mockito.anyInt(),Mockito.anyString()));
+
+
+    }
+
+
+   /* @Test
     public void createCustomer() {
         Mockito.when(customerService.createCustomer(customerDetailsModel)).thenReturn(customerDetailsModel);
         Assert.assertEquals("name", customerDetailsModel.getName());
@@ -55,6 +76,6 @@ public class CustomerServiceControllerTest {
         Mockito.when(customerService.createCustomer(customerDetailsModel))
                 .thenThrow(new CustomerCreateException(500, null));
         Assert.assertNotEquals("name1", customerDetailsModel.getName());
-    }
+    }*/
 
 }

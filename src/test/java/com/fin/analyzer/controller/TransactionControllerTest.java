@@ -25,7 +25,8 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 
 @RunWith(SpringRunner.class)
 @WebMvcTest(TransactionController.class)
-public class TransactionControllerTest {
+public class
+TransactionControllerTest {
 
     @Autowired
     private MockMvc mvc;
